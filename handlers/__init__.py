@@ -1,7 +1,6 @@
-from . import exceptions
-
-from . import admin_actions
-from . import user_actions
-from . import callbacks
-from . import personal_actions
-from . import group_events
+from handlers import exceptions
+from handlers import user_actions
+from handlers import admin_actions
+from handlers import HandlerOpenAI
+from handlers import callbacks
+from handlers import personal_actions
