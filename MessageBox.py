@@ -9,6 +9,28 @@ Ask me something: simply write a message down below 👇
 ↘️ Use menu button to see more.
 """
 
+GREETING_MESSAGE = """
+Welcome back 👋 
+
+Ask me something: simply write a message down below 👇
+
+🆕 In case if you want to erase the history of the dialog, press the "<b>Reset</b>" button or send command /start
+
+↘️ Use menu button to see more.
+"""
+
+MY_BALANCE_MESSAGE = """
+Your current balance is {}
+
+You can top up your balance in several ways:
+- Support us on BOOSTY
+- Invite a friend through the referral program (Referral link).
+- Wait next week when free tokens will be updated. 
+"""
+
+
+
+
 CHATMODELS = """
 At this moment you can chose one of 2 latest available models, GPT_3.5 and GPT_3.5_Turbo.
 

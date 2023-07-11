@@ -36,14 +36,18 @@ class BotDB:
     def get_client_tokens(self, user_id):
         query = "SELECT token_count FROM clients WHERE user_id=?"
         self.cursor.execute(query, (user_id,))
-        data = self.cursor.fetchall()
+        data = self.cursor.fetchall()[0]
         return data
 
-    def update_client_tokens(self, token_count, user_id):
-        query = "UPDATE clients SET token_count=? WHERE user_id=?"
+    def count_client_tokens(self, token_count, user_id):
+        query = "UPDATE clients SET token_count = token_count - ? WHERE user_id=?"
         self.cursor.execute(query, (token_count, user_id))
-        data = self.cursor.fetchall()
-        return data
+        return self.conn.commit()
+
+    def update_client_tokens(self, token_count):
+        query = "UPDATE clients SET token_count=?"
+        self.cursor.execute(query, (token_count,))
+        return self.conn.commit()
 
     def admin_exists(self, user_id):
         """Проверяем, есть ли админ в БД"""
