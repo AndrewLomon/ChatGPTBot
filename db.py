@@ -44,9 +44,9 @@ class BotDB:
         self.cursor.execute(query, (token_count, user_id))
         return self.conn.commit()
 
-    def update_client_tokens(self, token_count):
-        query = "UPDATE clients SET token_count=?"
-        self.cursor.execute(query, (token_count,))
+    def update_client_tokens(self, token_count, token_max):
+        query = "UPDATE clients SET token_count=? WHERE token_count < ?"
+        self.cursor.execute(query, (token_count, token_max))
         return self.conn.commit()
 
     def admin_exists(self, user_id):
