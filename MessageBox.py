@@ -20,12 +20,13 @@ Ask me something: simply write a message down below 👇
 """
 
 MY_BALANCE_MESSAGE = """
-Your current balance is {}
+Your current balance is {} tokens
 
 You can top up your balance in several ways:
-- Support us on BOOSTY
-- Invite a friend through the referral program (Referral link).
-- Wait next week when free tokens will be updated. 
+
+- Support growth of the project on BOOSTY
+- Contact developer @Lomonosov_Andrew.
+- Wait next week to get free {} tokens. 
 """
 
 

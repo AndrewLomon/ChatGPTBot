@@ -10,13 +10,15 @@ from Keyboards import Buttons
 openai.api_key = TOKEN_OPENAI
 MODEL = "gpt-3.5-turbo"
 
+
 # Make class for conversation history
 class ChatGPTstates(StatesGroup):
     dialog_chatgpt = State()
 
+
 async def chatgpt35turbo_handler(message: types.Message, state: FSMContext):
     try:
-        #Cheking is there enough tokens
+        # Checking is there enough tokens
         tokens = db.get_client_tokens(message.from_user.id)
         if tokens[0] <= 0:
             await message.answer('Unfortunately, you are run out of available tokens.\n '
@@ -56,9 +58,9 @@ async def chatgpt35turbo_handler(message: types.Message, state: FSMContext):
         # Send the response back to the user via the aiogram library
         await message.answer(chatgpt_response, reply_markup=Buttons.kbMenu, parse_mode='html')
     except:
-       await message.answer('Currently service is not available due to overload. '
-                            'Try later by pressing "<b>Reset chat</b>" button', parse_mode='html')
+        await message.answer('Currently service is not available due to overload. '
+                             'Try later by pressing "<b>Reset chat</b>" button', parse_mode='html')
 
 
-def openAI_registration(dp: Dispatcher):
+def openai_registration(dp: Dispatcher):
     dp.register_message_handler(chatgpt35turbo_handler, state=ChatGPTstates.dialog_chatgpt)

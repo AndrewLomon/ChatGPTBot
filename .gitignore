@@ -1,4 +1,5 @@
 .env
+dbGPT
 venv/
 __pycache__/
 .idea/

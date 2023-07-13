@@ -41,13 +41,14 @@ async def reset_handler(message: types.Message, state: FSMContext):
 
 
 # Define function to provide tokens balance from database
-async def my_balance(message: types.Message, state: FSMContext):
+async def my_balance(message: types.Message):
     user_id = message.from_user.id
     if not db.user_exists(user_id):
         await message.answer("Please, start over /start")
     else:
         user_tokens = db.get_client_tokens(user_id)[0]
-        await message.answer(MessageBox.MY_BALANCE_MESSAGE.format(user_tokens), reply_markup=Buttons.ikbBalance)
+        await message.answer(MessageBox.MY_BALANCE_MESSAGE.format(user_tokens, START_TOKEN),
+                             reply_markup=Buttons.ikbBalance)
 
 
 def updating_tokens():
@@ -55,7 +56,7 @@ def updating_tokens():
 
 
 # Schedule the user data update to occur on the first day of each month
-schedule.every(1).minutes.do(updating_tokens)
+schedule.every().monday.at("00:00").do(updating_tokens)
 
 
 async def scheduler():

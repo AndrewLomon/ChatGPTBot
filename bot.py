@@ -6,7 +6,7 @@ import asyncio
 
 # Main body
 user_actions.user_action_registration(dp)
-HandlerOpenAI.openAI_registration(dp)
+HandlerOpenAI.openai_registration(dp)
 
 
 if __name__ == "__main__":
